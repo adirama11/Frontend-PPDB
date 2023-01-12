@@ -164,7 +164,7 @@ function Nilai() {
               </h6>
             </div>
             <div class="card-body">
-              <Link to={`add`} className="btn btn-outline-success mt-3 mb-3">
+              <Link to={`../addNilai`} className="btn btn-outline-success mt-3 mb-3">
                 Add
               </Link>
               <table class="table table-bordered table-succes mx-auto">
