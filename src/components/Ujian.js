@@ -1,8 +1,27 @@
-import React from 'react'
-import styles from '../css/style.css';
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect} from "react";
+import axios from "axios";
+import styles from "../css/style.css";
+import { Link } from "react-router-dom";
 
-function Dashboard() {
+function Ujian() {
+    const [users, setUser] = useState([]);
+
+    useEffect(() => {
+        getAll();
+      }, []);
+    const getAll = async() => {
+        const res = await axios.get("http://localhost:5000/kartu/");
+        setUser(res.data);
+      }
+
+      const deleteData = async(id) => {
+        try {
+          await axios.delete(`http://localhost:5000/kartu/${id}`);
+          getAll();
+        } catch (error) {
+          console.log(error)
+        }
+      };
   return (
     <div className="sb-nav-fixed">
     <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -68,41 +87,46 @@ function Dashboard() {
         <div id="layoutSidenav_content">
             <main>
             <div class="container-fluid px-4">
-                    <h1 class="mt-4">Dashboard</h1>
+                    <h1 class="mt-4">Daftar Peserta Ujian</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item active">Daftar Peserta Ujian</li>
                     </ol>
-                    <div class="row">
-                        <div class="col-xl-3 col-md-6 mx-auto">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body">Pendaftar</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <p class="small text-white stretched-link">View Details</p>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 mx-auto">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body">Peserta Ujian</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <p class="small text-white stretched-link" href="#">View Details</p>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 mx-auto">
-                            <div class="card bg-success text-white mb-4">
-                                <div class="card-body">Pengumuman</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <p class="small text-white stretched-link" href="#">View Details</p>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </main>
+            <div class="card shadow mb-4 ">
+                <div class="card-header py-3 text-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Daftar Peserta Ujian</h6>
+                </div>
+                <div class="card-body">
+              <Link to={`add`} className="btn btn-outline-success mt-3 mb-3">
+                Add
+              </Link>
+                    <table class="table table-bordered table-succes">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col">Nomor</th>
+                                <th scope="col">ID Peserta</th>
+                                <th scope="col">ID Kloter</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {users.map((user, index) => (
+                        <tr key={user.id}>
+                        <th scope="col">{index+1}</th>
+                        <th scope="col">{user.id_peserta}</th>
+                        <th scope="col">{user.id_kloter}</th>
+                        <th scope="col">
+                          <Link to={``} className="btn btn-warning ms-3 me-3">Edit</Link >
+                          <Link onClick={() => deleteData(user.id_ujian)} className="btn btn-danger mx-auto">Delete</Link >
+                        </th>
+                      </tr>
+                      ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <footer className="py-4 bg-light mt-auto">
                 <div className="container-fluid px-4">
                     <div className="d-flex align-items-center justify-content-between small">
@@ -116,4 +140,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default Ujian
