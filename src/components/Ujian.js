@@ -99,7 +99,7 @@ function Ujian() {
                     <h6 class="m-0 font-weight-bold text-primary">Daftar Peserta Ujian</h6>
                 </div>
                 <div class="card-body">
-              <Link to={`add`} className="btn btn-outline-success mt-3 mb-3">
+              <Link to={`../addKartu`} className="btn btn-outline-success mt-3 mb-3">
                 Add
               </Link>
                     <table class="table table-bordered table-succes">

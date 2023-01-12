@@ -6,6 +6,7 @@ import Nilai from './components/Nilai';
 import Pendaftar from './components/Pendaftar';
 import Ujian from './components/Ujian';
 import CreatePendaftar from './components/CreatePendaftar';
+import CreateKartu from './components/CreateKartu';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/profil' element={<Pendaftar />}/>
         <Route path='/ujian' element={<Ujian />}/>
         <Route path='/addDaftar' element={<CreatePendaftar />}/>
+        <Route path='/addKartu' element={<CreateKartu />}/>
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CreateKartu() {
     const [id_peserta,setIdPeserta] = useState("");
@@ -31,7 +33,7 @@ function CreateKartu() {
                 <p className="text-center fw-bold mx-auto mb-0">Tambah Data Pendaftar</p>
               </div>
               <div className="form-outline mb-4">
-                <label className="form-label">ID User</label>
+                <label className="form-label">ID Peserta</label>
                 <input
                   type="text"
                   id="form3Example3"
