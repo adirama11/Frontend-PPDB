@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import Nilai from './components/Nilai';
 import Pendaftar from './components/Pendaftar';
 import Ujian from './components/Ujian';
+import CreatePendaftar from './components/CreatePendaftar';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/nilai' element={<Nilai />}/>
         <Route path='/profil' element={<Pendaftar />}/>
         <Route path='/ujian' element={<Ujian />}/>
+        <Route path='/addDaftar' element={<CreatePendaftar />}/>
       </Routes>
     </BrowserRouter>
   );

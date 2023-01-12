@@ -163,7 +163,7 @@ function Pendaftar() {
               </h6>
             </div>
             <div className="card-body">
-            <Link to={`add`} className="btn btn-outline-success mt-3 mb-3">
+            <Link to={`../addDaftar`} className="btn btn-outline-success mt-3 mb-3">
             Add
           </Link>
               <table className="table table-bordered table-succes">
